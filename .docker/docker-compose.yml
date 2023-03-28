@@ -1,0 +1,62 @@
+version: "3.8"
+
+services:
+  php:
+    image: ${COMPOSE_PROJECT_NAME}/php
+    build: ./images/php
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      APP_ENV: ${APP_ENV}
+      PHP_IDE_CONFIG: serverName=Docker
+    volumes:
+      - ./etc/php/conf.d/php-${APP_ENV}.ini:/usr/local/etc/php/conf.d/php.ini:ro
+      - ./etc/php/php-fpm.d/php-fpm.conf:/usr/local/etc/php-fpm.d/php-fpm.conf:ro
+      - ${APP_PATH}:${WORKING_DIR}
+      - ./var/log/php:/var/log/php-fpm
+    working_dir: '${WORKING_DIR}'
+    depends_on:
+      mysql:
+        condition: service_healthy
+  nginx:
+    image: ${COMPOSE_PROJECT_NAME}/nginx-proxy
+    build: ./images/nginx
+    hostname: ${VIRTUAL_HOST}
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      ROOT_PATH: ${WORKING_DIR}
+    volumes:
+      - ${APP_PATH}:${WORKING_DIR}
+      - ./var/log/nginx:/var/log/nginx
+      - ./etc/nginx/default.conf.template:/etc/nginx/templates/default.conf.template
+      - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./etc/nginx/certs:/etc/nginx/certs
+    depends_on:
+      - php
+    ports:
+      - "80:80"
+      - "443:443"
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ./var/storage/mysql:/var/lib/mysql
+      - ./etc/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD
+      interval: 5s
+      retries: 10
+    ports:
+      - "3306:3306"
+  nodejs:
+    image: ${COMPOSE_PROJECT_NAME}/node
+    build: ./images/nodejs
+    working_dir: ${WORKING_DIR}
+    volumes:
+      - ${APP_PATH}:${WORKING_DIR}
+    profiles:
+      - frontend
+

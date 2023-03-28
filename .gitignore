@@ -21,3 +21,4 @@
 /migrations/
 /.env
 /.env.test
+/.docker/.env
