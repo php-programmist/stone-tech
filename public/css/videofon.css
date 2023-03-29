@@ -84,7 +84,7 @@
   left: 0;
   overflow: hidden;
   z-index: 1;
-  background:url("/images/advantages-bg.jpg") fixed;
+  background:url("/img/header-slider/slide3.jpg") fixed;
   background-size: cover;
 }
 #video-bg > video {

@@ -11,7 +11,7 @@ server {
     index index.php index.html;
     server_name ${VIRTUAL_HOST} www.${VIRTUAL_HOST} localhost;
 
-    root ${ROOT_PATH}/public_html;
+    root ${ROOT_PATH}/public;
 
     location ~ \.(js|css)\.map$ {
         try_files $uri =404;
