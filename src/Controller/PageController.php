@@ -59,10 +59,17 @@ class PageController extends AbstractController
      * @var CityPagesRepository
      */
     protected $cityPagesRepository;
+    /**
+     * @var int[]
+     */
+    private $hide_price_array;
+    /**
+     * @var int[]
+     */
+    private $districtsCategory;
 
 
-
-   public function __construct(ContentRepository $repository, ProductsRepository $productsRepository, PaginatorInterface $paginator, ColorRepository $color_repository, StoneCatalogRepository $stoneCatalogRepository, StoneProductRepository $stoneProductRepository, CityPagesRepository $cityPagesRepository)
+    public function __construct(ContentRepository $repository, ProductsRepository $productsRepository, PaginatorInterface $paginator, ColorRepository $color_repository, StoneCatalogRepository $stoneCatalogRepository, StoneProductRepository $stoneProductRepository, CityPagesRepository $cityPagesRepository)
    {
        $this->page_repository = $repository;
        $this->products_repository = $productsRepository;
@@ -71,7 +78,7 @@ class PageController extends AbstractController
        $this->stoneCatalogRepository = $stoneCatalogRepository;
        $this->stoneProductRepository = $stoneProductRepository;
        $this->cityPagesRepository = $cityPagesRepository;
-       $this->hide_price_array =  array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 21, 22, 23);
+       $this->hide_price_array =  array(1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 21, 22, 23);
        $this->districtsCategory = array(1, 2, 3, 6, 7, 8, 11, 12, 13, 21, 22, 23);
    }
 
