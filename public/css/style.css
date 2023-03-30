@@ -351,6 +351,11 @@ a {
 
 }
 
+.img-button{
+    cursor: pointer;
+    margin: 10px 1% 0 10px;
+}
+
 .more-button {
     display: none;
     width: 90%;

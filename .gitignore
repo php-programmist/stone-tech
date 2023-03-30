@@ -1,6 +1,7 @@
 
 ###> symfony/framework-bundle ###
-/public/img
+/public/img/*
+!/public/img/buttons/
 /public/images
 /.env.local
 /.env.local.php
