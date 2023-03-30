@@ -184,9 +184,6 @@
         {{ include('elements/seo-text.html.twig') }}
     {% endif %}
 
-    {# Здесь потом нужно будет проверку после реализации таблиц с этапами монтажа #}
-    {{ include('elements/process.html.twig') }}
-
     {% if citiesBlock is defined and citiesBlock is not empty %}
        {{ include('elements/cities_block.html.twig')}}
     {% endif %}
