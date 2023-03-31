@@ -1,0 +1,22 @@
+{% extends 'page/category.html.twig' %}
+
+{% block body %}
+    {{ breadcrumbs(category) }}
+
+
+    {{ render(controller('App\\Widget\\Rating::show')) }}
+
+    {% embed 'elements/advantages.html.twig' %}
+        {% block keyword %}
+            {{ category.name|lower }}
+        {% endblock %}
+    {% endembed %}
+
+
+    {# Каталог #}
+    {% if products is not empty %}
+        <a id="catalog-anchor"></a>
+        {% include 'elements/catalog-block.html.twig' with {'products': products, 'category': category.categoryId.id, 'path':category.path, 'cardTitle': category.cardTitle, 'categoryChildren': categoryChildren} %}
+    {% endif %}
+
+{% endblock %}

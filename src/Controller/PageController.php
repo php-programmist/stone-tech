@@ -148,16 +148,16 @@ class PageController extends AbstractController
         }
 
         if($page instanceof Content) {
-            if ($page->getPageType() == 'category') {
+            if ($page->getPageType() === 'category') {
                 return $this->category($page, $paginator, $request);
             }
             //потом над этим подумать
-            if ($page->getPageType() == 'simple') {
+            if ($page->getPageType() === 'simple') {
                 return $this->simple($page);
             }
 
             //каталог камня
-            if($page->getPageType() == 'stonecatalog'){
+            if($page->getPageType() === 'stonecatalog'){
                 return $this->stoneCatalog($page);
 
             }
@@ -200,7 +200,7 @@ class PageController extends AbstractController
         ]);
     }
 
-    private function category($category, $paginator, $request){
+    private function category(Content $category, $paginator, $request){
         //определяем страницу, на которой находимся
 
         $page = 1;
@@ -242,7 +242,7 @@ class PageController extends AbstractController
             $min_price = $this->products_repository->findOneBy(['category_id' =>$category->getCategoryId()], ['price'=>'ASC']);
         }
         else{
-            $category_arr = array();
+            $category_arr = [$category->getCategoryId()];
             foreach ($category_children as $item){
                 $category_arr[] = $item->getCategoryId();
             }
@@ -281,7 +281,7 @@ class PageController extends AbstractController
         }
 
 
-        if(isset($_POST['ajax']) && isset($_POST['page'])){
+        if (isset($_POST['ajax']) && isset($_POST['page'])) {
 
                 return $this->render('ajax/catalog_more.html.twig', [
                     'path' => $category->getPath(),
@@ -295,7 +295,8 @@ class PageController extends AbstractController
                 ]);
 
         }
-        elseif (isset($_POST['ajax'])){
+
+        if(isset($_POST['ajax'])) {
             return $this->render('ajax/catalog.html.twig', [
                 'path' => $category->getPath(),
                 'category' => $category->getCategoryId(),
@@ -308,7 +309,7 @@ class PageController extends AbstractController
             ]);
         }
 
-        return $this->render('page/category.html.twig',[
+        return $this->render($category->getTemplate() ?? 'page/category.html.twig',[
            'category'=>$category,
             'works' => $ourWorks,
             'products' => $products,
@@ -396,7 +397,7 @@ class PageController extends AbstractController
         $colors = $this->getColors($all_category_products);
         $colorName = $this->color_repository->find($color);
 
-        if(isset($_POST['ajax']) && isset($_POST['page'])){
+        if (isset($_POST['ajax']) && isset($_POST['page'])) {
             return $this->render('ajax/catalog_more.html.twig',[
                 'path'=>$category->getPath(),
                 'category' =>$category->getCategoryId(),
@@ -408,7 +409,8 @@ class PageController extends AbstractController
                 'hidePriceArray' => in_array($category->getCategoryId()->getId(), $this->hide_price_array),
             ]);
         }
-        elseif (isset($_POST['ajax'])){
+
+        if(isset($_POST['ajax'])) {
             return $this->render('ajax/catalog.html.twig',[
                 'path'=>$category->getPath(),
                 'category' =>$category->getCategoryId(),

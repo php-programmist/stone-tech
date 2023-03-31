@@ -6,30 +6,12 @@ use App\Repository\ContentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\Measure;
 
 /**
  * @ORM\Entity(repositoryClass=ContentRepository::class)
  */
 class Content
 {
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Measure", inversedBy="contents")
-     */
-
-    private $measure;
-
-    public function getMeasure(): ?Measure
-    {
-        return $this->measure;
-    }
-
-    public function setMeasure(?Measure $measure): self
-    {
-        $this->measure = $measure;
-
-        return $this;
-    }
 
     /**
      * @ORM\Id
@@ -144,6 +126,11 @@ class Content
      * @ORM\OneToMany(targetEntity=CityPages::class, mappedBy="parent")
      */
     private $cityPages;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $template;
 
     public function __construct()
     {
@@ -429,4 +416,39 @@ class Content
         return $this;
     }
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Measure", inversedBy="contents")
+     */
+
+    private $measure;
+
+    public function getMeasure(): ?Measure
+    {
+        return $this->measure;
+    }
+
+    public function setMeasure(?Measure $measure): self
+    {
+        $this->measure = $measure;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTemplate():?string
+    {
+        return $this->template;
+    }
+
+    /**
+     * @param string|null $template
+     * @return $this
+     */
+    public function setTemplate(?string $template):self
+    {
+        $this->template = $template;
+        return $this;
+    }
 }

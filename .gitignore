@@ -19,7 +19,6 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 /.idea
-/migrations/
 /.env
 /.env.test
 /.docker/.env
