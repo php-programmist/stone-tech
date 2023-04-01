@@ -103,6 +103,11 @@ class Products
         return $this->path;
     }
 
+    public function getPathWithSlash(): ?string
+    {
+        return '/'.$this->path;
+    }
+
     public function setPath(string $path): self
     {
         $this->path = $path;

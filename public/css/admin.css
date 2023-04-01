@@ -1,0 +1,38 @@
+.form-widget input.form-control, .form-widget select.form-control, .form-widget textarea.form-control {
+    max-width: 100%;
+}
+
+.form-group label, .form-group legend.col-form-label {
+    flex: 15% 0 0;
+}
+
+.form-widget {
+    flex: 0 0 79%;
+}
+
+.select2-container--bootstrap .select2-selection {
+    max-width: 650px;
+}
+
+span.select2.select2-container.select2-container--bootstrap {
+    width: 650px !important;
+}
+
+.header_custom_menu {
+    display: flex;
+}
+
+.header_custom_menu > div {
+    margin: 0px 20px;
+}
+.header_custom_menu .btn-primary a{
+    color: white;
+}
+.header_custom_menu .alert {
+    display: none;
+    padding: 3px 1.25rem;
+}
+
+.custom-file-label {
+    padding-right: 100px;
+}

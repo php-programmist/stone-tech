@@ -10,6 +10,7 @@ use App\Entity\Country;
 use App\Entity\Products;
 use App\Entity\StoneCatalog;
 use App\Entity\StoneProduct;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -38,6 +39,18 @@ class DashboardController extends AbstractDashboardController
             ->setTitle('Stone Tech');
     }
 
+    public function configureAssets(): Assets
+    {
+        return Assets::new()
+            ->addCssFile('css/admin.css')
+            ->addCssFile('css/chosen.css')
+            ->addCssFile('css/jquery.dm-uploader.css')
+            ->addJsFile('js/cache_clear.js')
+            ->addJsFile('js/chosen.jquery.min.js')
+            ->addJsFile('js/chosen-select.js')
+            ->addJsFile('js/bs-custom-file-input.min.js');
+    }
+
     public function configureMenuItems(): iterable
     {
         return [
@@ -56,6 +69,10 @@ class DashboardController extends AbstractDashboardController
                 MenuItem::linkToCrud('Категории', 'fas fa-list', StoneCatalog::class),
                 MenuItem::linkToCrud('Камень', 'fas fa-cookie', StoneProduct::class),
                 MenuItem::linkToCrud('Страна', 'fas fa-list', Country::class),
+            ]),
+            MenuItem::subMenu('Импорт', 'fas fa-file-import')->setSubItems([
+                MenuItem::linktoRoute('Товары', 'fas fa-file-alt', 'admin_product_import'),
+                MenuItem::linktoRoute('Обновление цен', 'fas fa-calculator', 'admin_update_prices'),
             ]),
         ];
 

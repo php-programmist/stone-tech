@@ -1,0 +1,40 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title 'Импорт товаров' %}
+
+{% block content %}
+    <div class="content py-3">
+        {% if created is not empty %}
+            <div class="container-fluid">
+                <h2>Созданные товары</h2>
+                <ul>
+                    {% for uri in created %}
+                        {% set url = app.request.schemeAndHttpHost~uri %}
+                        <li><a href="{{ url }}" target="_blank">{{ url }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if updated is not empty %}
+            <div class="container-fluid">
+                <h2>Обновленные товары</h2>
+                <ul>
+                    {% for uri in updated %}
+                        {% set url = app.request.schemeAndHttpHost~uri %}
+                        <li><a href="{{ url }}" target="_blank">{{ url }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    
+        <div class="container-fluid">
+            <div class="alert alert-warning">Последовательность столбцов: Название карточек, Урлы, Материал, Название картинок, Цена, Цвет</div>
+            <div class="row">
+                <form method="post" id="admin_form" class="w-100" enctype="multipart/form-data">
+
+                    {{ form_widget(form) }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
