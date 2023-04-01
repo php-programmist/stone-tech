@@ -45,6 +45,8 @@ class Products
      */
     private $price;
 
+    private int $oldPrice = 0;
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -232,6 +234,24 @@ class Products
     {
         $this->updated = $updated;
 
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getOldPrice():int
+    {
+        return $this->oldPrice;
+    }
+
+    /**
+     * @param mixed $oldPrice
+     * @return $this
+     */
+    public function setOldPrice(int $oldPrice):self
+    {
+        $this->oldPrice = $oldPrice;
         return $this;
     }
 }

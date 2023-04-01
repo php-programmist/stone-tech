@@ -1,0 +1,40 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title 'Обновление цен' %}
+
+{% block content %}
+    <div class="content py-3">
+        
+        <div class="container-fluid">
+            <div class="row">
+                <form method="post" id="admin_form" class="w-100">
+                    {{ form_widget(form) }}
+                </form>
+            </div>
+            {% if updated is not empty %}
+                <div class="container-fluid">
+                    <h2>Обновленные товары</h2>
+                    <table class="table table-striped.">
+                        <thead>
+                        <tr>
+                            <td>Товар</td>
+                            <td>Старая цена</td>
+                            <td>Новая цена</td>
+                        </tr>
+                        </thead>
+                        {% for product in updated %}
+                            {% set url = app.request.schemeAndHttpHost~'/'~product.path %}
+                            <tr>
+                                <td>
+                                    <a href="{{ url }}" target="_blank">{{ product.name }}</a>
+                                </td>
+                                <td>{{ product.oldPrice }}</td>
+                                <td>{{ product.price }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

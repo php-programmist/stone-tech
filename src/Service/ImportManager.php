@@ -6,6 +6,7 @@ use App\Entity\Color;
 use App\Entity\Measure;
 use App\Entity\Products;
 use App\Model\Admin\ProductImport;
+use App\Model\Admin\UpdatePrices;
 use Doctrine\ORM\EntityManagerInterface;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 use RuntimeException;
@@ -62,7 +63,6 @@ class ImportManager
                 $product = $this->initProduct($productName, $slug, $productImport);
                 $created[] = $product->getPathWithSlash();
             } else {
-                $product->setPath(sprintf('%s/%s/', $productImport->getBaseUri(), $slug));
                 $updated[] = $product->getPathWithSlash();
             }
             $this->setColor($colorName, $product);
@@ -89,40 +89,19 @@ class ImportManager
         return [$created, $updated];
     }
 
-    /*public function updatePrices(UpdatePrices $updatePricesDto): array
+    public function updatePrices(UpdatePrices $updatePrices): array
     {
-        $spreadsheet = $this->xlsxReader->load($updatePricesDto->getXlsFile());
-        $updated     = [];
-        $notFound    = [];
-        $productRepo = $this->entityManager->getRepository(Product::class);
-        foreach ($spreadsheet->getAllSheets() as $sheet) {
-            $sheetData = $sheet->toArray(null, true, true, true);
-            foreach ($sheetData as $row_number => $row) {
-                [
-                    "A" => $url,
-                    "B" => $price,
-                ] = $row;
-                
-                if ($row_number < 2 || empty($url)) {
-                    continue;
-                }
-                
-                $uri = trim(parse_url($url, PHP_URL_PATH), ' /');
-                
-                $product = $productRepo->findOneBy(['uri' => $uri]);
-                if (null === $product) {
-                    $notFound[] = $url;
-                } else {
-                    $this->setPrice((float)$price, $product);
-                    $updated[] = $product->getPath();
-                }
-            }
+        $factor = 1 + ($updatePrices->getPercent() / 100);
+        foreach ($updatePrices->getCategory()?->getProducts() as $product) {
+            $product->setOldPrice($product->getPrice());
+            $newPrice = round($product->getPrice() * $factor);
+            $product->setPrice((int)$newPrice);
         }
         
         $this->entityManager->flush();
         
-        return [$updated, $notFound];
-    }*/
+        return $updatePrices->getCategory()?->getProducts()->toArray();
+    }
 
     private function importImages(?UploadedFile $zippedImages, string $folder): void
     {

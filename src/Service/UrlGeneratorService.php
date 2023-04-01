@@ -45,7 +45,7 @@ class UrlGeneratorService
 
     public function generateUrlByProduct(Products $products){
 
-        $itemPath = $products->setPath($products->getPath().'/');
+        $itemPath = $products->setPath(rtrim($products->getPath(),'/').'/');
         $this->em->persist($itemPath);
         $this->em->flush();
     }

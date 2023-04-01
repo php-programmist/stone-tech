@@ -3,7 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Form\ProductImportType;
+use App\Form\UpdatePricesType;
 use App\Model\Admin\ProductImport;
+use App\Model\Admin\UpdatePrices;
 use App\Service\ImportManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,7 +48,7 @@ class PageImportController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             try{
-                [$updated, $notFound] = $manager->updatePrices($updatePricesDto);
+                $updated = $manager->updatePrices($updatePricesDto);
             } catch (Throwable $e){
                 $this->addFlash('warning', $e->getMessage());
             }
@@ -54,7 +56,6 @@ class PageImportController extends AbstractController
         
         return $this->render('admin/update-prices/index.html.twig', [
             'form'     => $form->createView(),
-            'notFound' => $notFound ?? [],
             'updated'  => $updated ?? [],
         ]);
     }
