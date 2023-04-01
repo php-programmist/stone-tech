@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   php:
-    image: ${COMPOSE_PROJECT_NAME}/php
+    image: phpprogrammist/php-mysql:8.1
     build: ./images/php
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}

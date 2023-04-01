@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine
+FROM php:8.1-fpm-alpine
 
 # Import extension installer
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
