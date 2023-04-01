@@ -290,7 +290,7 @@ class PageController extends AbstractController
                     'colors' => $colors,
                     'pagination' => $pagination,
                     'activeColor' => null,
-                    'hidePriceArray' => in_array($category->getCategoryId(), $this->hide_price_array),
+                    'hidePriceArray' => in_array($category->getCategoryId()->getId(), $this->hide_price_array),
                     'citiesBlock' => $citiesBlock,
                 ]);
 
