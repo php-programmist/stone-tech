@@ -242,10 +242,8 @@ class PageController extends AbstractController
             $min_price = $this->products_repository->findOneBy(['category_id' =>$category->getCategoryId()], ['price'=>'ASC']);
         }
         else{
-            $category_arr = [$category->getCategoryId()];
-            foreach ($category_children as $item){
-                $category_arr[] = $item->getCategoryId();
-            }
+            $category_arr = $category->getChildrenCategoryIdsRecursive($this->page_repository);
+
             if(isset($_POST['ajax']) && isset($_POST['page'])){
                 $products = $this->getProductsFromChildrenMore($this->products_repository, $category_arr, $sort, $page, $startPage);
                 $all_products = $this->products_repository->findAll();
@@ -366,10 +364,8 @@ class PageController extends AbstractController
         }
         //если общая
         else {
-            $category_arr = array();
-            foreach ($category_children as $item) {
-                $category_arr[] = $item->getCategoryId();
-            }
+            $category_arr = $category->getChildrenCategoryIdsRecursive($this->page_repository);
+
             if(isset($_POST['ajax']) && isset($_POST['page'])) {
                 $products = $this->getProductsByColorFromChildMore($this->products_repository, $this->color_repository, $category_arr, $color, $sort, $page, $startPage);
                 $all_products = $this->products_repository->findBy(['category_id' => $category_arr, 'color' => $color]);
@@ -379,7 +375,6 @@ class PageController extends AbstractController
                     $request->query->getInt('page', $page+1), /*page number*/
                     $limit /*limit per page*/
                 );
-                $all_category_products = $this->getProducts($this->products_repository, $category_arr, $sort);
             } else {
                 $products = $this->getProductsByColorFromChild($this->products_repository, $this->color_repository, $category_arr, $color, $sort);
                 $pagination = $paginator->paginate(
@@ -387,8 +382,8 @@ class PageController extends AbstractController
                     $request->query->getInt('page', 1),
                     20
                 );
-                $all_category_products = $this->getProducts($this->products_repository, $category_arr, $sort);
             }
+            $all_category_products = $this->getProducts($this->products_repository, $category_arr, $sort);
         }
 
 

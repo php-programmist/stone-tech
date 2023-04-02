@@ -451,4 +451,22 @@ class Content
         $this->template = $template;
         return $this;
     }
+
+    public function getChildrenCategoryIdsRecursive(ContentRepository $repo):array
+    {
+        $categoryIds = [];
+        if (null !== $this->getCategoryId()) {
+            $categoryIds[] = $this->getCategoryId()->getId();
+        }
+        $children = $repo->findBy(['parent' => $this->getId()]);
+        if (count($children) > 0) {
+            $childrenResults = [];
+            foreach ($children as $child) {
+                $childrenResults[] = $child->getChildrenCategoryIdsRecursive($repo);
+            }
+            $categoryIds = array_merge($categoryIds, ...$childrenResults);
+        }
+
+        return $categoryIds;
+    }
 }
