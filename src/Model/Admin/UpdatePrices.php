@@ -5,10 +5,11 @@ namespace App\Model\Admin;
 
 
 use App\Entity\Category;
+use App\Entity\Content;
 
 class UpdatePrices
 {
-    private ?Category $category = null;
+    private ?Content $content = null;
 
     /**
      * @var float Процент увеличения цены
@@ -16,20 +17,20 @@ class UpdatePrices
     private float $percent = 0.00;
 
     /**
-     * @return Category|null
+     * @return Content|null
      */
-    public function getCategory(): ?Category
+    public function getContent(): ?Content
     {
-        return $this->category;
+        return $this->content;
     }
 
     /**
-     * @param Category|null $category
+     * @param Content|null $content
      * @return $this
      */
-    public function setCategory(?Category $category): self
+    public function setContent(?Content $content): self
     {
-        $this->category = $category;
+        $this->content = $content;
         return $this;
     }
 

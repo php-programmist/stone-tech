@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\Color;
+use App\Entity\Content;
 use App\Entity\Measure;
 use App\Entity\Products;
 use App\Model\Admin\ProductImport;
@@ -92,7 +93,16 @@ class ImportManager
     public function updatePrices(UpdatePrices $updatePrices): array
     {
         $factor = 1 + ($updatePrices->getPercent() / 100);
-        foreach ($updatePrices->getCategory()?->getProducts() as $product) {
+
+        $allCategories = $updatePrices
+            ->getContent()
+            ?->getChildrenCategoryIdsRecursive($this->entityManager->getRepository(Content::class));
+
+        $products = $this->entityManager
+            ->getRepository(Products::class)
+            ->findBy(['category_id' => $allCategories]);
+
+        foreach ($products as $product) {
             $product->setOldPrice($product->getPrice());
             $newPrice = round($product->getPrice() * $factor);
             $product->setPrice((int)$newPrice);
@@ -100,7 +110,7 @@ class ImportManager
         
         $this->entityManager->flush();
         
-        return $updatePrices->getCategory()?->getProducts()->toArray();
+        return $products;
     }
 
     private function importImages(?UploadedFile $zippedImages, string $folder): void
