@@ -279,7 +279,7 @@ class PageController extends AbstractController
         }
 
 
-        if (isset($_POST['ajax']) && isset($_POST['page'])) {
+        if (isset($_POST['ajax'], $_POST['page'])) {
 
                 return $this->render('ajax/catalog_more.html.twig', [
                     'path' => $category->getPath(),
@@ -288,7 +288,7 @@ class PageController extends AbstractController
                     'colors' => $colors,
                     'pagination' => $pagination,
                     'activeColor' => null,
-                    'hidePriceArray' => in_array($category->getCategoryId()->getId(), $this->hide_price_array),
+                    'hidePriceArray' => in_array($category->getCategoryId()?->getId(), $this->hide_price_array, true),
                     'citiesBlock' => $citiesBlock,
                 ]);
 
