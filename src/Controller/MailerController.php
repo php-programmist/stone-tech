@@ -16,18 +16,19 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class MailerController extends AbstractController
 {
-    private $validatorInterface;
-
-    public function __construct(ValidatorInterface $validatorInterface)
-    {
-        $this->validatorInterface = $validatorInterface;
-    }
+    private const BLACK_LIST = [
+        '8 (777) 777-7777'
+    ];
 
     /**
      * @Route("/raschet_form", name="raschet_form")
      */
     public function raschet_form(Request $request, MailerInterface $mailer)
     {
+        $response = new JsonResponse(['success' => '<p>Спасибо! Ваша заявка отправлена.</p>']);
+        if (in_array($request->get('form-phone'), self::BLACK_LIST, true)) {
+            return $response;
+        }
 
         $to = array('anya-programmist@qmotors.ru', '89853148967@mail.ru', 'info@stone-tech.ru', 'bespalov@stone-tech.ru');
         foreach ($to as $recipient){
@@ -43,7 +44,7 @@ class MailerController extends AbstractController
             $mailer->send($email);
         }
 
-        return new JsonResponse(['success'=>'<p>Спасибо! Ваша заявка отправлена.</p>']);
+        return $response;
 
     }
 
@@ -53,6 +54,10 @@ class MailerController extends AbstractController
      */
     public function application(Request $request, MailerInterface $mailer)
     {
+        $response = new JsonResponse(['success' => '<p>Спасибо! Ваше сообщение отправлено.</p>']);
+        if (in_array($request->get('telephone'), self::BLACK_LIST, true)) {
+            return $response;
+        }
         // $to = explode(',',$this->getTo($request->get('salon')) );
         $to = array('anya-programmist@qmotors.ru', '89853148967@mail.ru', 'info@stone-tech.ru', 'bespalov@stone-tech.ru');
 
@@ -81,7 +86,12 @@ class MailerController extends AbstractController
     /**
      * @Route("/callback_form", name="callback_form")
      */
-    public function callback_form(Request $request, MailerInterface $mailer){
+    public function callback_form(Request $request, MailerInterface $mailer)
+    {
+        $response = new JsonResponse(['success' => '<p>Спасибо! Ваша заявка отправлена.</p>']);
+        if (in_array($request->get('form-phone'), self::BLACK_LIST, true)) {
+            return $response;
+        }
         //$to = explode(',',$this->getTo($request->get('salon')) );
         $to = array('anya-programmist@qmotors.ru', '89853148967@mail.ru', 'info@stone-tech.ru', 'bespalov@stone-tech.ru');
         $productType = $this->getProduct($request->get('form-product'));
