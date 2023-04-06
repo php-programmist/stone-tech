@@ -28,6 +28,9 @@ use App\Repository\CityPagesRepository;
 
 class PageController extends AbstractController
 {
+    private const HIDE_PRICE = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 21, 22, 23];
+    private const SHOW_DISTRICTS = [1, 2, 3, 6, 7, 8, 11, 12, 13, 21, 22, 23];
+
     /**
      * @var ContentRepository
      */
@@ -59,14 +62,6 @@ class PageController extends AbstractController
      * @var CityPagesRepository
      */
     protected $cityPagesRepository;
-    /**
-     * @var int[]
-     */
-    private $hide_price_array;
-    /**
-     * @var int[]
-     */
-    private $districtsCategory;
 
 
     public function __construct(ContentRepository $repository, ProductsRepository $productsRepository, PaginatorInterface $paginator, ColorRepository $color_repository, StoneCatalogRepository $stoneCatalogRepository, StoneProductRepository $stoneProductRepository, CityPagesRepository $cityPagesRepository)
@@ -78,15 +73,16 @@ class PageController extends AbstractController
        $this->stoneCatalogRepository = $stoneCatalogRepository;
        $this->stoneProductRepository = $stoneProductRepository;
        $this->cityPagesRepository = $cityPagesRepository;
-       $this->hide_price_array =  array(1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 21, 22, 23);
-       $this->districtsCategory = array(1, 2, 3, 6, 7, 8, 11, 12, 13, 21, 22, 23);
    }
 
     /**
      * @Route ("/{token}districts/", name="districts", requirements={"token"=".+\/$"})
      */
     public function districts($token, Request $request):Response{
-        if(!$page =  $this->page_repository->findOneBy(['path'=>$token]) or in_array($page->getCategoryId()->getId(), $this->districtsCategory) == false){
+        if(
+            !($page = $this->page_repository->findOneBy(['path'=>$token]) )
+            || !in_array($page->getCategoryId()?->getId(), self::SHOW_DISTRICTS, true)
+        ){
             throw $this->createNotFoundException(sprintf('Page %s not found', $token.'districts'));
         }
         $cities = $this->cityPagesRepository->findBy(['parent' => $page->getId()], ['name' => 'ASC']);
@@ -288,7 +284,7 @@ class PageController extends AbstractController
                     'colors' => $colors,
                     'pagination' => $pagination,
                     'activeColor' => null,
-                    'hidePriceArray' => in_array($category->getCategoryId()?->getId(), $this->hide_price_array, true),
+                    'hidePriceArray' => in_array($category->getCategoryId()?->getId(), self::HIDE_PRICE, true),
                     'citiesBlock' => $citiesBlock,
                 ]);
 
@@ -302,7 +298,7 @@ class PageController extends AbstractController
                 'colors' => $colors,
                 'pagination' => $pagination,
                 'activeColor' => null,
-                'hidePriceArray' => in_array($category->getCategoryId()->getId(), $this->hide_price_array),
+                'hidePriceArray' => in_array($category->getCategoryId()->getId(), self::HIDE_PRICE, true),
                 'citiesBlock' => $citiesBlock,
             ]);
         }
@@ -316,7 +312,7 @@ class PageController extends AbstractController
             'activeColor' => null,
             'minPrice' => $min_price,
             'categoryChildren' => $category_children,
-            'hidePriceArray' => in_array($category->getCategoryId()->getId(), $this->hide_price_array),
+            'hidePriceArray' => in_array($category->getCategoryId()?->getId(), self::HIDE_PRICE, true),
             'citiesBlock' => $citiesBlock,
         ]);
     }
@@ -401,7 +397,7 @@ class PageController extends AbstractController
                 'pagination'=>$pagination,
                 'activeColor' => null,
                 'categoryChildren' => $category_children,
-                'hidePriceArray' => in_array($category->getCategoryId()->getId(), $this->hide_price_array),
+                'hidePriceArray' => in_array($category->getCategoryId()->getId(), self::HIDE_PRICE, true),
             ]);
         }
 
@@ -414,7 +410,7 @@ class PageController extends AbstractController
                 'pagination'=>$pagination,
                 'activeColor' => null,
                 'categoryChildren' => $category_children,
-                'hidePriceArray' => in_array($category->getCategoryId()->getId(), $this->hide_price_array),
+                'hidePriceArray' => in_array($category->getCategoryId()->getId(), self::HIDE_PRICE, true),
             ]);
         }
 
@@ -428,7 +424,7 @@ class PageController extends AbstractController
             'colorName' => $colorName->getColorPlural(),
             'colorPath' => $colorName->getSlug(),
             'categoryChildren' => $category_children,
-            'hidePriceArray' => in_array($category->getCategoryId()->getId(), $this->hide_price_array),
+            'hidePriceArray' => in_array($category->getCategoryId()->getId(), self::HIDE_PRICE, true),
         ]);
     }
 
@@ -436,7 +432,7 @@ class PageController extends AbstractController
     private function product($product){
         return $this->render('product/index.html.twig',[
             'product'=>$product,
-            'hidePriceArray' => in_array($product->getCategoryId()->getId(), $this->hide_price_array),
+            'hidePriceArray' => in_array($product->getCategoryId()->getId(), self::HIDE_PRICE, true),
         ]);
     }
 
