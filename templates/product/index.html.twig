@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% if product.metaTitle is not null %} {{ product.metaTitle}} {% else %}{{ product.name }} купить в Москве.{% endif %}{% endblock %}
+{% block title %}{% if product.metaTitle is not null %} {{ product.metaTitle }} {% else %}{{ product.name }} купить в Москве.{% endif %}{% endblock %}
 
-{% block description %}{% if product.metaDescription is not null %} {{ product.metaDescription}} {% else %}{{ product.name }}  купить в Москве. ⭐ Бесплатный замер. ✅ Изготовление и установка столешниц за 5-7 дней. ✅ Гарантия 2 года. ⭐ {{ product.name }} по низким ценам ☎ 8(495)961-26-90.{% endif %}{% endblock %}
-{% block lastMod %}<meta http-equiv="Last-Modified" content="{{ product.updated|date('D, d M Y H:i:s') }} GMT">{% endblock %}
-{% block canonical %}<link rel="canonical" href="{{ app.request.schemeAndHttpHost~'/'~product.path }}"/>{% endblock %}
+{% block description %}{% if product.metaDescription is not null %} {{ product.metaDescription }} {% else %}{{ product.name }}  купить в Москве. ⭐ Бесплатный замер. ✅ Изготовление и установка столешниц за 5-7 дней. ✅ Гарантия 2 года. ⭐ {{ product.name }} по низким ценам ☎ 8(495)961-26-90.{% endif %}{% endblock %}
+{% block lastMod %}
+    <meta http-equiv="Last-Modified" content="{{ product.updated|date('D, d M Y H:i:s') }} GMT">{% endblock %}
+{% block canonical %}
+    <link rel="canonical" href="{{ app.request.schemeAndHttpHost~'/'~product.path }}"/>{% endblock %}
  {% block scheme %}
      <meta property="og:title" content="{{ block('title') }}"/>
      <meta property="og:description" content="{{ block('description') }}"/>
@@ -12,7 +14,7 @@
      <meta property="og:image" content="{{ app.request.schemeAndHttpHost }}/img/header/logo1.png"/>
  {% endblock %}
 {% block header %}
-    {# header banner#}
+    {# header banner #}
     {% embed 'elements/header.html.twig' %}
         {% block h1 %}
             {{ product.name }}
@@ -22,18 +24,19 @@
 
 {% block body %}
     {{ product_breadcrumbs(product) }}
-    <a id="product-card"></a>
     {{ render(controller('App\\Widget\\Rating::show')) }}
     {# Карточка #}
     {% embed 'elements/category_card.html.twig' %}
         {% block cardImage %}
             {% if product.bigImg is not null %}
-            <img class="alignnone size-medium" src="/uploads/products/big{{ asset(product.bigImg) }}" width="580" height="580"><br>
-            <br><img class="mob-img" src="/uploads/products/big{{ asset(product.bigImg) }}">
+                <img class="alignnone size-medium" src="/uploads/products/big{{ asset(product.bigImg) }}" width="580"
+                     height="580">
+                <img class="mob-img" src="/uploads/products/big{{ asset(product.bigImg) }}">
             {% else %}
-            {% if product.image is not null %}
-                <img class="alignnone size-medium" src="/uploads/products{{ asset(product.image) }}" width="580" height="580"><br>
-                <br><img class="mob-img" src="/uploads/products{{ asset(product.image) }}">
+                {% if product.image is not null %}
+                    <img class="alignnone size-medium" src="/uploads/products{{ asset(product.image) }}" width="580"
+                         height="580"><br>
+                    <br><img class="mob-img" src="/uploads/products{{ asset(product.image) }}">
                 {% endif %}
             {% endif %}
 
@@ -48,18 +51,18 @@
         {% endblock %}
 
 
-            {% block cardPrice %}
-                {#{% if product.categoryId.id != 21 and product.categoryId.id != 22 and product.categoryId.id != 23 %}#}
-{% if hidePriceArray is defined and hidePriceArray == false %}
-                    {{ product.price }}
-                    {% else %}
-                    <style>
-                        .catalog .price{
-                            display: none;
-                        }
-                    </style>
-                {% endif %}
-            {% endblock %}
+        {% block cardPrice %}
+            {# {% if product.categoryId.id != 21 and product.categoryId.id != 22 and product.categoryId.id != 23 %} #}
+            {% if hidePriceArray is defined and hidePriceArray == false %}
+                {{ product.price }}
+            {% else %}
+                <style>
+                    .catalog .price {
+                        display: none;
+                    }
+                </style>
+            {% endif %}
+        {% endblock %}
 
 
         {% block cardMeasure %}

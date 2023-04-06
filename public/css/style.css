@@ -1540,11 +1540,11 @@ button::-moz-focus-inner {
 }
 
 .catalog h3 {
-
     font-weight: 400;
-    letter-spacing: 0px;
-    margin-bottom: 20px;
-    text-align: left;
+    letter-spacing: 0;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 0 10px;
 }
 
 .catalog h2 {

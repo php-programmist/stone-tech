@@ -4,18 +4,20 @@
         <div class="catalog">
             <div class="wrapper">
                 <div class="items">
-                    <div class="item item-1">
-                        {% block cardImage %}
-                            <img class="alignnone size-medium" src="{{ asset('uploads/2018/01/stoleshnica-iz-kamnia.jpg') }}" width="580" height="580"><br>
-                            <br><img class="mob-img" src="{{ asset('uploads/2018/01/stoleshnica-iz-kamnia.jpg') }}">
-                        {% endblock %}
-                    </div>
-                    <div class="item item-2">
+                    <div id="product-card" class="item item-header">
                         <h3>
                             {% block cardTitle %}
                                 Столешница из натурального камня
                             {% endblock %}
                         </h3>
+                    </div>
+                    <div class="item item-1">
+                        {% block cardImage %}
+                            <img class="alignnone size-medium" src="{{ asset('uploads/2018/01/stoleshnica-iz-kamnia.jpg') }}" width="580" height="580">
+                            <img class="mob-img" src="{{ asset('uploads/2018/01/stoleshnica-iz-kamnia.jpg') }}">
+                        {% endblock %}
+                    </div>
+                    <div class="item item-2">
                         <div class="text">
                             {% block cardDescription %}
                             <div><span>Материал столешницы:</span> из натурального камня</div>
