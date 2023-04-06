@@ -4995,7 +4995,7 @@ input[name=address] {
 
 @media (max-width: 470px) {
     .products .product{
-        width: calc(60% - 20px);
+        width: calc(90% - 20px);
     }
 }
 
@@ -5067,6 +5067,11 @@ input[name=address] {
     padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
+}
+@media (max-width: 470px) {
+    .sub-sections-filter_body{
+        flex-direction: column;
+    }
 }
 .color-filter__item{
     margin: 5px;
