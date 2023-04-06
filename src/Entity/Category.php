@@ -18,22 +18,27 @@ class Category
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $shortName;
 
     /**
      * @ORM\OneToMany(targetEntity=Content::class, mappedBy="category_id", cascade={"persist", "remove"})
      */
-    private $content;
+    private Collection $content;
 
     /**
      * @ORM\OneToMany(targetEntity=Products::class, mappedBy="category_id")
      */
-    private $products;
+    private Collection $products;
 
 
     public function __construct()
@@ -64,24 +69,34 @@ class Category
         return $this;
     }
 
-    public function getContent(): ?Content
+
+    /**
+     * @return Collection|Content[]
+     */
+    public function getContent(): Collection
     {
         return $this->content;
     }
 
-    public function setContent(?Content $content): self
+    public function addContent(Content $content): self
     {
-        // unset the owning side of the relation if necessary
-        if ($content === null && $this->content !== null) {
-            $this->content->setCategoryId(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($content !== null && $content->getCategoryId() !== $this) {
+        if (!$this->content->contains($content)) {
+            $this->content[] = $content;
             $content->setCategoryId($this);
         }
 
-        $this->content = $content;
+        return $this;
+    }
+
+    public function removeContent(Content $content): self
+    {
+        // set the owning side to null (unless already changed)
+        if (
+            $this->content->removeElement($content)
+            && $content->getCategoryId() === $this
+        ) {
+            $content->setCategoryId(null);
+        }
 
         return $this;
     }
@@ -113,6 +128,24 @@ class Category
             }
         }
 
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getShortName(): ?string
+    {
+        return $this->shortName ?? $this->name;
+    }
+
+    /**
+     * @param string|null $shortName
+     * @return $this
+     */
+    public function setShortName(?string $shortName): self
+    {
+        $this->shortName = $shortName;
         return $this;
     }
 

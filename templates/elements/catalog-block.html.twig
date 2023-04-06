@@ -15,7 +15,7 @@
                     <div class="sub-sections-filter_body">
                     {% for child in categoryChildren %}
                         <a href="/{{ child.path }}#catalog-anchor">
-                            {{ child.name }}
+                            {{ child.categoryId.shortName }}
                         </a>
                     {% endfor %}
                     </div>
