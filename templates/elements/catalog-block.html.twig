@@ -51,11 +51,11 @@
                 {% for product in pagination %}
                     <div class="product">
                         <a href="/{{ product.path }}#product-card">
-                            <img src="/uploads/products/{{ product.image }}" alt="{{ product.name }}">
+                            <img src="/uploads/products/{{ product.image }}" alt="{{ product.shortName }}">
                         </a>
                         <div class="product__name">
                             <a href="/{{ product.path }}#product-card">
-                                {{ product.name }}
+                                {{ product.shortName }}
                             </a>
                         </div>
                         {#{% if category != 21 and category != 22 and category != 23 %}#}

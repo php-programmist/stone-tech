@@ -254,4 +254,9 @@ class Products
         $this->oldPrice = $oldPrice;
         return $this;
     }
+
+    public function getShortName():string
+    {
+        return preg_replace('/\(.+\)/','', $this->name);
+    }
 }
