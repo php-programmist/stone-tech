@@ -1,0 +1,29 @@
+<div class="mobile-menu">
+    <ul class="mobile-menu__container">
+        {% for item in menu %}
+            <li>
+                <div class="mobile-menu__item">
+                    <a href="/{{ item[loop.index-1][1] }}">
+                        <span class="h6">{{ item[loop.index-1][0] }}</span>
+                    </a>
+                    {% if item.children is not empty %}
+                        <div class="mobile-menu__arrow js-submenu-toggle"></div>
+                    {% endif %}
+                </div>
+                {% if item.children is not empty %}
+                    <ul class="mobile-menu__drop-down">
+                        {% for subItem in item.children %}
+                            <li>
+                                <div class="mobile-menu__item">
+                                    <a href="/{{ subItem[1] }}">
+                                        {{ subItem[0] }}
+                                    </a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

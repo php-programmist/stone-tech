@@ -19,6 +19,15 @@ $(function () {
 		}
 		
 	});
+
+
+	$('.js-mobile-menu-burger').click(function (){
+		$('.mobile-menu__container').toggleClass('visible');
+	});
+
+	$('.js-submenu-toggle').click(function (){
+		$(this).parent().parent().toggleClass('d-hover-effect');
+	});
 });
 
 

@@ -1,20 +1,24 @@
-
 <div class="menu">
     <ul id="menu-main" class="menu">
-    {% for item in menu %}
-        {% if item['children'] is empty %}
-            <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/{{ item[loop.index-1][1] }}">{{ item[loop.index-1][0] }}</a></li>
+        {% for item in menu %}
+            {% if item['children'] is empty %}
+                <li class="menu-item menu-item-type-post_type menu-item-object-page"><a
+                            href="/{{ item[loop.index-1][1] }}">{{ item[loop.index-1][0] }}</a></li>
             {% else %}
-        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="/{{ item[loop.index-1][1] }}">{{ item[loop.index-1][0] }}</a>
-            <ul class="sub-menu">
-                {% for subItem in item['children'] %}
-                <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/{{ subItem[1] }}">{{ subItem[0] }}</a></li>
-                {% endfor %}
-            </ul>
-        </li>
-        {% endif %}
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a
+                            href="/{{ item[loop.index-1][1] }}">{{ item[loop.index-1][0] }}</a>
+                    <ul class="sub-menu">
+                        {% for subItem in item['children'] %}
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page"><a
+                                        href="/{{ subItem[1] }}">{{ subItem[0] }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endif %}
 
-    {% endfor %}
+        {% endfor %}
 
     </ul>
 </div>
+{{ include('elements/mobile-header.html.twig') }}
+{{ include('elements/mobile-menu.html.twig') }}
