@@ -9,7 +9,7 @@
         <link>https://www.stone-tech.ru/</link>
         <description>Мы рады приветствовать Вас на корпоративном сайте компании «Каменные Технологии» . Компания специализируется на поставках и обработке природного камня: мрамора, гранит, доломита, известняка, оникса. Мы выполняем полный спектр облицовочных и монтажных работ, а также изготавливаем изделия из натурального камня различной сложности: мраморные лестницы, гранитные мойки, колонны, камины и многое другое.</description>
         <language>ru</language>
-        <item turbo="true"><title>Камины из натурального камня цена от 80 000 р. Купить камины из камня в Москве</title><link>https://www.stone-tech.ru/kaminy/</link><turbo:content>
+        <item turbo="false"><title>Камины из натурального камня цена от 80 000 р. Купить камины из камня в Москве</title><link>https://www.stone-tech.ru/kaminy/</link><turbo:content>
                 <![CDATA[
 	                <header>
 	                	<h1>КАМИНЫ ИЗ НАТУРАЛЬНОГО КАМНЯ</h1>
@@ -153,7 +153,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Камины из мрамора цена от 90 000 рублей. Купить мраморный камин в Москве</title><link>https://www.stone-tech.ru/kaminy/iz-mramora/</link><turbo:content>
+            <item turbo="false"><title>Камины из мрамора цена от 90 000 рублей. Купить мраморный камин в Москве</title><link>https://www.stone-tech.ru/kaminy/iz-mramora/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>КАМИНЫ ИЗ МРАМОРА</h1>
@@ -268,7 +268,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Камины из гранита цена от 80 000 рублей. Купить гранитный камин в Москве</title><link>https://www.stone-tech.ru/kaminy/iz-granita/</link><turbo:content>
+            <item turbo="false"><title>Камины из гранита цена от 80 000 рублей. Купить гранитный камин в Москве</title><link>https://www.stone-tech.ru/kaminy/iz-granita/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>КАМИНЫ ИЗ ГРАНИТА</h1>
@@ -374,7 +374,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Камины из травертина цена от 80 000 рублей. Купить камины в Москве</title><link>https://www.stone-tech.ru/kaminy/iz-travertina/</link><turbo:content>
+            <item turbo="false"><title>Камины из травертина цена от 80 000 рублей. Купить камины в Москве</title><link>https://www.stone-tech.ru/kaminy/iz-travertina/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>КАМИНЫ ИЗ ТРАВЕРТИНА</h1>
@@ -479,7 +479,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Камины из оникса цена от 100 000 рублей. Купить камины в Москве</title><link>https://www.stone-tech.ru/kaminy/iz-oniksa/</link><turbo:content>
+            <item turbo="false"><title>Камины из оникса цена от 100 000 рублей. Купить камины в Москве</title><link>https://www.stone-tech.ru/kaminy/iz-oniksa/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>КАМИНЫ ИЗ ОНИКСА</h1>

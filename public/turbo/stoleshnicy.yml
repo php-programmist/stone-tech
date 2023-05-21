@@ -9,7 +9,7 @@
         <link>https://www.stone-tech.ru/</link>
         <description>Мы рады приветствовать Вас на корпоративном сайте компании «Каменные Технологии» . Компания специализируется на поставках и обработке природного камня: мрамора, гранит, доломита, известняка, оникса. Мы выполняем полный спектр облицовочных и монтажных работ, а также изготавливаем изделия из натурального камня различной сложности: мраморные лестницы, гранитные мойки, колонны, камины и многое другое.</description>
         <language>ru</language>
-        <item turbo="true"><title>Столешницы из натурального камня цена. Купить столешницу из камня для кухни и ванной в Москве</title><link>https://www.stone-tech.ru/stoleshnicy/</link><turbo:content>
+        <item turbo="false"><title>Столешницы из натурального камня цена. Купить столешницу из камня для кухни и ванной в Москве</title><link>https://www.stone-tech.ru/stoleshnicy/</link><turbo:content>
                 <![CDATA[
 	                <header>
 	                	<h1>СТОЛЕШНИЦЫ ИЗ НАТУРАЛЬНОГО КАМНЯ</h1>
@@ -136,7 +136,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Столешницы из мрамора цена. Купить мраморную столешницу для кухни и ванной в Москве</title><link>https://www.stone-tech.ru/stoleshnicy/iz-mramora/</link><turbo:content>
+            <item turbo="false"><title>Столешницы из мрамора цена. Купить мраморную столешницу для кухни и ванной в Москве</title><link>https://www.stone-tech.ru/stoleshnicy/iz-mramora/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>СТОЛЕШНИЦЫ ИЗ МРАМОРА</h1>
@@ -266,7 +266,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Столешницы из гранита цена. Купить гранитную столешницу для кухни и ванной в Москве</title><link>https://www.stone-tech.ru/stoleshnicy/iz-granita/</link><turbo:content>
+            <item turbo="false"><title>Столешницы из гранита цена. Купить гранитную столешницу для кухни и ванной в Москве</title><link>https://www.stone-tech.ru/stoleshnicy/iz-granita/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>СТОЛЕШНИЦЫ ИЗ ГРАНИТА</h1>
@@ -399,7 +399,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Столешницы из травертина цена от 7000 руб/п.м. Купить столешницу из травертина в Москве</title><link>https://www.stone-tech.ru/stoleshnicy/iz-travertina/</link><turbo:content>
+            <item turbo="false"><title>Столешницы из травертина цена от 7000 руб/п.м. Купить столешницу из травертина в Москве</title><link>https://www.stone-tech.ru/stoleshnicy/iz-travertina/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>СТОЛЕШНИЦЫ ИЗ ТРАВЕРТИНА</h1>
@@ -505,7 +505,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Столешницы из оникса цена от 13000 руб/п.м. Купить столешницу из оникса в Москве</title><link>https://www.stone-tech.ru/stoleshnicy/iz-oniksa/</link><turbo:content>
+            <item turbo="false"><title>Столешницы из оникса цена от 13000 руб/п.м. Купить столешницу из оникса в Москве</title><link>https://www.stone-tech.ru/stoleshnicy/iz-oniksa/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>СТОЛЕШНИЦЫ ИЗ ОНИКСА</h1>

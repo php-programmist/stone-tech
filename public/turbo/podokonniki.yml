@@ -9,7 +9,7 @@
         <link>https://www.stone-tech.ru/</link>
         <description>Мы рады приветствовать Вас на корпоративном сайте компании «Каменные Технологии» . Компания специализируется на поставках и обработке природного камня: мрамора, гранит, доломита, известняка, оникса. Мы выполняем полный спектр облицовочных и монтажных работ, а также изготавливаем изделия из натурального камня различной сложности: мраморные лестницы, гранитные мойки, колонны, камины и многое другое.</description>
         <language>ru</language>
-        <item turbo="true"><title>Подоконники из натурального камня. Купить подоконник из камня в Москве</title><link>https://www.stone-tech.ru/podokonniki/</link><turbo:content>
+        <item turbo="false"><title>Подоконники из натурального камня. Купить подоконник из камня в Москве</title><link>https://www.stone-tech.ru/podokonniki/</link><turbo:content>
                 <![CDATA[
 	                <header>
 	                	<h1>ПОДОКОННИКИ ИЗ НАТУРАЛЬНОГО КАМНЯ</h1>
@@ -122,7 +122,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Подоконники из мрамора цена. Купить мраморный подоконник в Москве</title><link>https://www.stone-tech.ru/podokonniki/iz-mramora/</link><turbo:content>
+            <item turbo="false"><title>Подоконники из мрамора цена. Купить мраморный подоконник в Москве</title><link>https://www.stone-tech.ru/podokonniki/iz-mramora/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>ПОДОКОННИКИ ИЗ МРАМОРА</h1>
@@ -240,7 +240,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Подоконники из гранита цена. Купить гранитный подоконник в Москве</title><link>https://www.stone-tech.ru/podokonniki/iz-granita/</link><turbo:content>
+            <item turbo="false"><title>Подоконники из гранита цена. Купить гранитный подоконник в Москве</title><link>https://www.stone-tech.ru/podokonniki/iz-granita/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>ПОДОКОННИКИ ИЗ ГРАНИТА</h1>
@@ -355,7 +355,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Подоконники из оникса цена от 13000 руб/п.м. Купить подоконник в Москве</title><link>https://www.stone-tech.ru/podokonniki/iz-oniksa/</link><turbo:content>
+            <item turbo="false"><title>Подоконники из оникса цена от 13000 руб/п.м. Купить подоконник в Москве</title><link>https://www.stone-tech.ru/podokonniki/iz-oniksa/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>ПОДОКОННИКИ ИЗ ОНИКСА</h1>
@@ -460,7 +460,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Подоконники из травертина цена от 7000 руб/п.м. Купить подоконник в Москве</title><link>https://www.stone-tech.ru/podokonniki/iz-travertina/
+            <item turbo="false"><title>Подоконники из травертина цена от 7000 руб/п.м. Купить подоконник в Москве</title><link>https://www.stone-tech.ru/podokonniki/iz-travertina/
 </link><turbo:content>
                 <![CDATA[
                     <header>

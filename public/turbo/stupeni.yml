@@ -9,7 +9,7 @@
         <link>https://www.stone-tech.ru/</link>
         <description>Мы рады приветствовать Вас на корпоративном сайте компании «Каменные Технологии» . Компания специализируется на поставках и обработке природного камня: мрамора, гранит, доломита, известняка, оникса. Мы выполняем полный спектр облицовочных и монтажных работ, а также изготавливаем изделия из натурального камня различной сложности: мраморные лестницы, гранитные мойки, колонны, камины и многое другое.</description>
         <language>ru</language>
-        <item turbo="true"><title>Ступени из натурального камня цена. Купить ступени из камня в Москве</title><link>https://www.stone-tech.ru/stupeni/</link><turbo:content>
+        <item turbo="false"><title>Ступени из натурального камня цена. Купить ступени из камня в Москве</title><link>https://www.stone-tech.ru/stupeni/</link><turbo:content>
                 <![CDATA[
 	                <header>
 	                	<h1>СТУПЕНИ ИЗ НАТУРАЛЬНОГО КАМНЯ</h1>
@@ -128,7 +128,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Ступени из мрамора цена. Купить мраморные ступени в Москве</title><link>https://www.stone-tech.ru/stupeni/iz-mramora/</link><turbo:content>
+            <item turbo="false"><title>Ступени из мрамора цена. Купить мраморные ступени в Москве</title><link>https://www.stone-tech.ru/stupeni/iz-mramora/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>СТУПЕНИ ИЗ МРАМОРА</h1>
@@ -246,7 +246,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Ступени из гранита цена. Купить гранитные ступени в Москве</title><link>https://www.stone-tech.ru/stupeni/iz-granita/</link><turbo:content>
+            <item turbo="false"><title>Ступени из гранита цена. Купить гранитные ступени в Москве</title><link>https://www.stone-tech.ru/stupeni/iz-granita/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>СТУПЕНИ ИЗ ГРАНИТА</h1>
@@ -364,7 +364,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Ступени из травертина цена от 7000 руб/п.м. Купить ступени в Москве</title><link>https://www.stone-tech.ru/stupeni/iz-travertina/</link><turbo:content>
+            <item turbo="false"><title>Ступени из травертина цена от 7000 руб/п.м. Купить ступени в Москве</title><link>https://www.stone-tech.ru/stupeni/iz-travertina/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>СТУПЕНИ ИЗ ТРАВЕРТИНА</h1>
@@ -469,7 +469,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Ступени из оникса цена от 13000 руб/п.м. Купить ступени в Москве</title><link>https://www.stone-tech.ru/stupeni/iz-oniksa/</link><turbo:content>
+            <item turbo="false"><title>Ступени из оникса цена от 13000 руб/п.м. Купить ступени в Москве</title><link>https://www.stone-tech.ru/stupeni/iz-oniksa/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>СТУПЕНИ ИЗ ОНИКСА</h1>

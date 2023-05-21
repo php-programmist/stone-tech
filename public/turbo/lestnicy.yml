@@ -9,7 +9,7 @@
         <link>https://www.stone-tech.ru/</link>
         <description>Мы рады приветствовать Вас на корпоративном сайте компании «Каменные Технологии» . Компания специализируется на поставках и обработке природного камня: мрамора, гранит, доломита, известняка, оникса. Мы выполняем полный спектр облицовочных и монтажных работ, а также изготавливаем изделия из натурального камня различной сложности: мраморные лестницы, гранитные мойки, колонны, камины и многое другое.</description>
         <language>ru</language>
-        <item turbo="true"><title>Лестницы из натурального камня цена. Купить лестницы из камня в Москве</title><link>https://www.stone-tech.ru/lestnicy/</link><turbo:content>
+        <item turbo="false"><title>Лестницы из натурального камня цена. Купить лестницы из камня в Москве</title><link>https://www.stone-tech.ru/lestnicy/</link><turbo:content>
                 <![CDATA[
 	                <header>
 	                	<h1>ЛЕСТНИЦЫ ИЗ НАТУРАЛЬНОГО КАМНЯ</h1>
@@ -127,7 +127,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Лестницы из мрамора цена. Купить мраморные лестницы в Москве</title><link>https://www.stone-tech.ru/lestnicy/iz-mramora/</link><turbo:content>
+            <item turbo="false"><title>Лестницы из мрамора цена. Купить мраморные лестницы в Москве</title><link>https://www.stone-tech.ru/lestnicy/iz-mramora/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>ЛЕСТНИЦЫ ИЗ МРАМОРА</h1>
@@ -245,7 +245,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Лестницы из гранита цена. Купить гранитные лестницы в Москве</title><link>https://www.stone-tech.ru/lestnicy/iz-granita/</link><turbo:content>
+            <item turbo="false"><title>Лестницы из гранита цена. Купить гранитные лестницы в Москве</title><link>https://www.stone-tech.ru/lestnicy/iz-granita/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>ЛЕСТНИЦЫ ИЗ ГРАНИТА</h1>
@@ -363,7 +363,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Лестницы из травертина цена от 7000 руб. Купить лестницы из травертина в Москве</title><link>https://www.stone-tech.ru/lestnicy/iz-travertina/</link><turbo:content>
+            <item turbo="false"><title>Лестницы из травертина цена от 7000 руб. Купить лестницы из травертина в Москве</title><link>https://www.stone-tech.ru/lestnicy/iz-travertina/</link><turbo:content>
                 <![CDATA[
                     <header>
                         <h1>ЛЕСТНИЦЫ ИЗ ТРАВЕРТИНА</h1>
@@ -468,7 +468,7 @@
                 ]]>
                 </turbo:content>
             </item>
-            <item turbo="true"><title>Лестницы из оникса цена от 13000 руб/п.м. Купить лестницы из оникса в Москве</title><link>https://www.stone-tech.ru/lestnicy/iz-oniksa/
+            <item turbo="false"><title>Лестницы из оникса цена от 13000 руб/п.м. Купить лестницы из оникса в Москве</title><link>https://www.stone-tech.ru/lestnicy/iz-oniksa/
 </link><turbo:content>
                 <![CDATA[
                     <header>
