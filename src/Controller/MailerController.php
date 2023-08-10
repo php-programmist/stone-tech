@@ -39,6 +39,8 @@ class MailerController extends AbstractController
                 ->html('<p>Новая заявка на расчет с сайта Stone-tech.ru</p>
              <p>Имя отправителя: ' . $request->get('client-name') . '</p>
             <p>Телефон отправителя: ' . $request->get('form-phone') . '</p>
+            <p>URL страницы: ' . $request->get('url') . '</p>
+            <p>Название страницы: ' . $request->get('title') . '</p>
             '
                 );
             $mailer->send($email);

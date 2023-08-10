@@ -179,13 +179,12 @@ jQuery(document).ready(function($){
         else {
             $(form_phone).css('border-color', '#d2d8d8');
             $(form_name).css('border-color', '#d2d8d8');
+            const data = $(form).serialize()+`&url=${window.location.href}&title=${document.title}`;
 
             $.ajax({
                 type: 'post',
                 url: '/raschet_form',
-                    data:
-                        $(form).serialize()
-                ,
+                data,
                 success: function(response) {
                     if (response !== 'ERROR') {
                         console.log(response);
@@ -278,11 +277,11 @@ jQuery(document).ready(function($){
         } else {
             $(form_phone).css('border-color', '#d2d8d8');
             $(form_name).css('border-color', '#d2d8d8');
-
+            const data = $(form).serialize()+`&url=${window.location.href}&title=${document.title}`;
             $.ajax({
                 type: 'post',
                 url: '/raschet_form',
-                data: $(form).serialize(),
+                data,
                 success: function(response) {
                     if (response !== 'ERROR') {
                         console.log(response);
