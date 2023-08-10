@@ -51,7 +51,7 @@
                 {% for product in pagination %}
                     <div class="product">
                         <a href="/{{ product.path }}#product-card">
-                            <img src="/uploads/products/{{ product.image }}" alt="{{ product.shortName }}">
+                            <img class="b-lazy" data-src="/uploads/products/{{ product.image }}" alt="{{ product.shortName }}">
                         </a>
                         <div class="product__name">
                             <a href="/{{ product.path }}#product-card">
