@@ -30,6 +30,7 @@ class PageController extends AbstractController
 {
     private const HIDE_PRICE = [ 9, 10, 11, 12, 13, 14, 15 ];
     private const SHOW_DISTRICTS = [1, 2, 3, 6, 7, 8, 11, 12, 13, 21, 22, 23];
+    private const PER_PAGE = 24;
 
     /**
      * @var ContentRepository
@@ -220,7 +221,7 @@ class PageController extends AbstractController
             if(isset($_POST['ajax']) && isset($_POST['page'])){
                 $products = $this->getProductsMore($this->products_repository, $category->getCategoryId(), $sort, $page, $startPage);
                 $all_products = $this->products_repository->findBy(['category_id' => $category->getCategoryId()]);
-                $limit = 20;
+                $limit = self::PER_PAGE;
                 $pagination = $paginator->paginate(
                     $all_products, /* query NOT result */
                     $request->query->getInt('page', $page+1), /*page number*/
@@ -232,7 +233,7 @@ class PageController extends AbstractController
                 $pagination = $paginator->paginate(
                     $products,
                     $request->query->getInt('page', 1),
-                    20
+                    self::PER_PAGE
                 );
             }
             $min_price = $this->products_repository->findOneBy(['category_id' =>$category->getCategoryId()], ['price'=>'ASC']);
@@ -243,7 +244,7 @@ class PageController extends AbstractController
             if(isset($_POST['ajax']) && isset($_POST['page'])){
                 $products = $this->getProductsFromChildrenMore($this->products_repository, $category_arr, $sort, $page, $startPage);
                 $all_products = $this->products_repository->findAll();
-                $limit = 20;
+                $limit = self::PER_PAGE;
                 $pagination = $paginator->paginate(
                     $all_products, /* query NOT result */
                     $request->query->getInt('page', $page+1), /*page number*/
@@ -254,7 +255,7 @@ class PageController extends AbstractController
                 $pagination = $paginator->paginate(
                     $products,
                     $request->query->getInt('page', 1),
-                    20
+                    self::PER_PAGE
                 );
             }
             $min_price = $this->products_repository->findOneBy(['category_id' =>$category_arr], ['price'=>'ASC']);
@@ -339,7 +340,7 @@ class PageController extends AbstractController
         if(empty($category_children)) {
             if(isset($_POST['ajax']) && isset($_POST['page'])){
                 $products = $this->getProductsByColorMore($this->products_repository, $this->color_repository, $category->getCategoryId(), $color, $sort, $page, $startPage);
-                $limit = 20;
+                $limit = self::PER_PAGE;
                 $all_products = $this->products_repository->findBy(['category_id' => $category->getCategoryId(), 'color' => $color]);
                 $all_category_products = $this->getProducts($this->products_repository, $category->getCategoryId(), $sort);
                 $pagination = $paginator->paginate(
@@ -354,7 +355,7 @@ class PageController extends AbstractController
                 $pagination = $paginator->paginate(
                     $products,
                     $request->query->getInt('page', 1),
-                    20
+                    self::PER_PAGE
                 );
             }
         }
@@ -365,7 +366,7 @@ class PageController extends AbstractController
             if(isset($_POST['ajax']) && isset($_POST['page'])) {
                 $products = $this->getProductsByColorFromChildMore($this->products_repository, $this->color_repository, $category_arr, $color, $sort, $page, $startPage);
                 $all_products = $this->products_repository->findBy(['category_id' => $category_arr, 'color' => $color]);
-                $limit = 20;
+                $limit = self::PER_PAGE;
                 $pagination = $paginator->paginate(
                     $all_products, /* query NOT result */
                     $request->query->getInt('page', $page+1), /*page number*/
@@ -376,7 +377,7 @@ class PageController extends AbstractController
                 $pagination = $paginator->paginate(
                     $products,
                     $request->query->getInt('page', 1),
-                    20
+                    self::PER_PAGE
                 );
             }
             $all_category_products = $this->getProducts($this->products_repository, $category_arr, $sort);
@@ -465,9 +466,9 @@ class PageController extends AbstractController
     }
     private function getProductsMore(ProductsRepository $productsRepository, $categoryId, $sort, $page, $startPage){
         if(!isset($sort)){
-            $products = $productsRepository->findBy(['category_id' => $categoryId], ['price'=>'ASC'], 20*($page+1), 20*$startPage-20);
+            $products = $productsRepository->findBy(['category_id' => $categoryId], ['price'=>'ASC'], self::PER_PAGE *($page+1), self::PER_PAGE *$startPage- self::PER_PAGE);
         }else{
-            $products = $productsRepository->findBy(['category_id' => $categoryId], ['price'=>$sort], 20*($page+1), 20*$startPage-20);
+            $products = $productsRepository->findBy(['category_id' => $categoryId], ['price'=>$sort], self::PER_PAGE *($page+1), self::PER_PAGE *$startPage- self::PER_PAGE);
         }
         return $products;
     }
@@ -483,9 +484,9 @@ class PageController extends AbstractController
 
     private function getProductsFromChildrenMore(ProductsRepository $productsRepository, $categoriesArr, $sort, $page, $startPage){
         if(!isset($sort)){
-            $products = $productsRepository->findBy(['category_id' => $categoriesArr], ['price'=>'ASC'], 20*($page+1), 20*$startPage-20);
+            $products = $productsRepository->findBy(['category_id' => $categoriesArr], ['price'=>'ASC'], self::PER_PAGE *($page+1), self::PER_PAGE *$startPage- self::PER_PAGE);
         }else{
-            $products = $productsRepository->findBy(['category_id' => $categoriesArr], ['price'=>$sort], 20*($page+1), 20*$startPage-20);
+            $products = $productsRepository->findBy(['category_id' => $categoriesArr], ['price'=>$sort], self::PER_PAGE *($page+1), self::PER_PAGE *$startPage- self::PER_PAGE);
         }
         return $products;
     }
@@ -510,12 +511,12 @@ class PageController extends AbstractController
             $products = $productsRepository->findBy([
                 'category_id' => $categoryId,
                 'color' => $color,
-            ], [],20*($page+1), 20*$startPage-20);
+            ], [], self::PER_PAGE *($page+1), self::PER_PAGE *$startPage- self::PER_PAGE);
         }else {
             $products = $productsRepository->findBy([
                 'category_id' => $categoryId,
                 'color' => $color,
-            ], ['price'=>$sort], 20*($page+1), 20*$startPage-20);
+            ], ['price'=>$sort], self::PER_PAGE *($page+1), self::PER_PAGE *$startPage- self::PER_PAGE);
         }
         return $products;
     }
@@ -540,12 +541,12 @@ class PageController extends AbstractController
             $products = $productsRepository->findBy([
                 'category_id' => $categoriesArr,
                 'color' => $color,
-            ], [],20*($page+1), 20*$startPage-20);
+            ], [], self::PER_PAGE *($page+1), self::PER_PAGE *$startPage- self::PER_PAGE);
         }else {
             $products = $productsRepository->findBy([
                 'category_id' => $categoriesArr,
                 'color' => $color,
-            ], ['price'=>$sort], 20*($page+1), 20*$startPage-20);
+            ], ['price'=>$sort], self::PER_PAGE *($page+1), self::PER_PAGE *$startPage- self::PER_PAGE);
         }
         return $products;
     }
