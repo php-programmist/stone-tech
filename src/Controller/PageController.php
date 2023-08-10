@@ -452,6 +452,10 @@ class PageController extends AbstractController
             $files = null;
         }
 
+        $maxFiles = 8;
+        if (is_array($files) && count($files) > $maxFiles){
+            $files = array_slice($files, 0 , $maxFiles);
+        }
 
         return $files;
     }
