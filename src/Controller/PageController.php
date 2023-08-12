@@ -28,7 +28,7 @@ use App\Repository\CityPagesRepository;
 
 class PageController extends AbstractController
 {
-    private const HIDE_PRICE = [ 9, 10, 11, 12, 13, 14, 15 ];
+    private const HIDE_PRICE = [ 9, 10, 14, 15 ];
     private const SHOW_DISTRICTS = [1, 2, 3, 6, 7, 8, 11, 12, 13, 21, 22, 23];
     private const PER_PAGE = 24;
 
