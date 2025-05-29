@@ -12,5 +12,6 @@ Disallow: */feed
 Disallow: /*?*
 Disallow: /tag
 Disallow: /test
+Disallow: /confidence-policy/
 Host: www.stone-tech.ru
 Sitemap: https://www.stone-tech.ru/sitemap.xml

@@ -33,6 +33,7 @@
                    required/>
             <input name="telephone" type="Tel" class="applicationTelephone input" maxlength="20"
                    placeholder="Введите ваш телефон" required/>
+            {{ include('elements/agreement-checkbox.html.twig') }}
             <button class="applicationButton button" type="submit"> Отправить</button>
 
         </form>

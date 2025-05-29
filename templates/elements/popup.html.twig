@@ -23,6 +23,7 @@
 
                 <input name="telephone" type="Tel" class="applicationTelephone input" maxlength="20"
                        placeholder="Введите ваш телефон" required/>
+                {{ include('elements/agreement-checkbox.html.twig') }}
                 <input type="submit" class="button" value="Отправить">
                 <div class="popup-text">Мы перезвоним через 7 минут!</div>
             </form>

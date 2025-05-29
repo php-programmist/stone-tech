@@ -3565,12 +3565,16 @@ button::-moz-focus-inner {
     border: 1px solid #858585;
     background-color: rgba(34, 34, 34, 0.70);
     width: 330px;
-    height: 335px;
+    height: 422px;
     text-align: center;
     margin: 0 auto;
 
     border-radius: 6px;
 
+}
+
+#questions .mainform .agreement-block label {
+    color: white;
 }
 
 #questions .formtext {
