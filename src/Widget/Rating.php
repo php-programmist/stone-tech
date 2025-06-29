@@ -34,8 +34,8 @@ class Rating extends AbstractController
                 'link' => 'https://yandex.ru/maps/org/kamtekh/1118245677/?ll=37.751269%2C55.762738&z=14',
                 'img'=> 'images/rating-logo-yandex.png',
                 'alt'=> 'Yandex',
-                'stars'=> 4.2,
-                'rating'=> 4.2
+                'stars'=> 4.7,
+                'rating'=> 4.7
             ],
             [
                 'link' => 'https://goo.gl/maps/PrAZMvq9TgVKp4dC7',
