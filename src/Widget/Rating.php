@@ -27,8 +27,8 @@ class Rating extends AbstractController
                 'link' => 'https://kamennye-tehnologii.blizko.ru/reviews',
                 'img'=> 'images/blizko.jpg',
                 'alt'=> 'Близко.ру',
-                'stars'=> 4.6,
-                'rating'=> 5.0
+                'stars'=> 5.0,
+                'rating'=> 4.6
             ],
             [
                 'link' => 'https://yandex.ru/maps/org/kamtekh/1118245677/?ll=37.751269%2C55.762738&z=14',
