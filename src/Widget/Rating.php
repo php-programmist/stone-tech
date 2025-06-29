@@ -27,7 +27,7 @@ class Rating extends AbstractController
                 'link' => 'https://kamennye-tehnologii.blizko.ru/reviews',
                 'img'=> 'images/blizko.jpg',
                 'alt'=> 'Близко.ру',
-                'stars'=> 5.0,
+                'stars'=> 4.6,
                 'rating'=> 5.0
             ],
             [
