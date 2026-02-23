@@ -24,13 +24,18 @@ class MailerController extends AbstractController
         '8 (777) 777-7777'
     ];
 
+    private const BLACK_LIST_IP = [
+        '188.123.231.68',
+        '2a00:1fa0:26f:1b23:61ed:300f:2ff8:1298',
+    ];
+
     /**
      * @Route("/raschet_form", name="raschet_form")
      */
     public function raschet_form(Request $request): JsonResponse
     {
         $response = new JsonResponse(['success' => '<p>Спасибо! Ваша заявка отправлена.</p>']);
-        if (in_array($request->get('form-phone'), self::BLACK_LIST, true)) {
+        if ($this->isBlackListedIp() || $this->isBlackListedPhone($request->get('form-phone'))) {
             return $response;
         }
         $params = [
@@ -50,10 +55,10 @@ class MailerController extends AbstractController
     /**
      * @Route("/application", name="application_form")
      */
-    public function application(Request $request, MailerInterface $mailer)
+    public function application(Request $request)
     {
         $response = new JsonResponse(['success' => '<p>Спасибо! Ваше сообщение отправлено.</p>']);
-        if (in_array($request->get('telephone'), self::BLACK_LIST, true)) {
+        if ($this->isBlackListedIp() || $this->isBlackListedPhone($request->get('telephone'))) {
             return $response;
         }
         $params = [
@@ -72,7 +77,7 @@ class MailerController extends AbstractController
     public function callback_form(Request $request)
     {
         $response = new JsonResponse(['success' => '<p>Спасибо! Ваша заявка отправлена.</p>']);
-        if (in_array($request->get('form-phone'), self::BLACK_LIST, true)) {
+        if ($this->isBlackListedIp() || $this->isBlackListedPhone($request->get('form-phone'))) {
             return $response;
         }
 
@@ -100,4 +105,13 @@ class MailerController extends AbstractController
         };
     }
 
+    private function isBlackListedIp(): bool
+    {
+        return in_array($_SERVER['REMOTE_ADDR'], self::BLACK_LIST_IP, true);
+    }
+
+    private function isBlackListedPhone(string $phone): bool
+    {
+        return in_array($phone, self::BLACK_LIST, true);
+    }
 }
