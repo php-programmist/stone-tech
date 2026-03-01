@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\BlackIp;
 use App\Entity\Category;
 use App\Entity\City;
 use App\Entity\CityPages;
@@ -74,6 +75,7 @@ class DashboardController extends AbstractDashboardController
                 MenuItem::linktoRoute('Товары', 'fas fa-file-alt', 'admin_product_import'),
                 MenuItem::linktoRoute('Обновление цен', 'fas fa-calculator', 'admin_update_prices'),
             ]),
+            MenuItem::linkToCrud('Черный список IP','fa fa-tags', BlackIp::class),
         ];
 
     }

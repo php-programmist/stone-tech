@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
+use App\Repository\BlackIpRepository;
 use App\Service\MailerManager;
 use App\Service\TelegramApiManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -16,17 +16,13 @@ class MailerController extends AbstractController
     public function __construct(
         private MailerManager      $mailerManager,
         private TelegramApiManager $telegramApiManager,
+        private BlackIpRepository  $blackIpRepository,
     )
     {
     }
 
     private const BLACK_LIST = [
         '8 (777) 777-7777'
-    ];
-
-    private const BLACK_LIST_IP = [
-        '188.123.231.68',
-        '2a00:1fa0:26f:1b23:61ed:300f:2ff8:1298',
     ];
 
     /**
@@ -107,7 +103,8 @@ class MailerController extends AbstractController
 
     private function isBlackListedIp(): bool
     {
-        return in_array($_SERVER['REMOTE_ADDR'], self::BLACK_LIST_IP, true);
+        $blackIp = $this->blackIpRepository->findOneBy(['ip' => $_SERVER['REMOTE_ADDR']]);
+        return $blackIp !== null;
     }
 
     private function isBlackListedPhone(string $phone): bool
